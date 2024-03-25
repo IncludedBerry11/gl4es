@@ -92,9 +92,7 @@ LOCAL_SRC_FILES := \
 LOCAL_CFLAGS += -std=gnu99 -funwind-tables -O3 -fvisibility=hidden -include include/android_debug.h
 LOCAL_CFLAGS += -DNOX11
 LOCAL_CFLAGS += -DNO_GBM
-LOCAL_CFLAGS += -DNO_INIT_CONSTRUCTOR=ON
-LOCAL_CFLAGS += -DNOEGL=ON
-LOCAL_CFLAGS += -DNO_LOADER=ON
+LOCAL_CFLAGS += -lto
 LOCAL_CFLAGS += -DDEFAULT_ES=2
 LOCAL_CFLAGS += -Wno-typedef-redefinition -Wno-dangling-else
 LOCAL_CFLAGS += -Dasm=__asm__ -Dvolatile=__volatile__
