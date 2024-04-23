@@ -101,7 +101,7 @@ endif()
 
 # Android
 if(ANDROID)
-    add_definitions(-DANDROID -include include/gl4esinit.h -DNO_INIT_CONSTRUCTOR=ON)
+    add_definitions(-DANDROID -DNO_INIT_CONSTRUCTOR=ON)
     add_definitions(-DNOX11 -DNO_GBM -DDEFAULT_ES=2 -DNO_LOADER=ON -DNOEGL=ON -Dasm=__asm__ -Dvolatile=__volatile__ -Wno-typedef-redefinition -Wno-dangling-else -DSHAREDLIB)
 endif()
 
