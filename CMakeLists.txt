@@ -214,7 +214,7 @@ endif()
 
 include_directories(include)
 add_subdirectory(src)
-
+src/gl/libtxc_dxtn/txc_compress_dxtn.c
 enable_testing()
 
 macro(create_test test_name test_filename calls_count tolerance)
