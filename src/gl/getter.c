@@ -181,15 +181,29 @@ void BuildExtensionsList() {
         if(hardext.floattex || (globals4es.floattex==2)) {
             strcat(extensions, "GL_EXT_texture_float ");
             strcat(extensions, "GL_ARB_texture_float ");
+            strcat(extensions, "GL_OES_texture_float ");
+        }
+        if(hardext.floattexlinear || (globals4es.floattex==2)) {
+            strcat(extensions, "GL_EXT_texture_float_linear ");
+            strcat(extensions, "GL_OES_texture_float_linear ");
         }
         if(hardext.halffloattex || (globals4es.floattex==2)) {
             strcat(extensions, "GL_EXT_texture_half_float ");
+            strcat(extensions, "GL_OES_texture_half_float ");
+        }
+        if(hardext.halffloattexlinear || (globals4es.floattex==2)) {
+            strcat(extensions, "GL_EXT_texture_half_float_linear ");
+            strcat(extensions, "GL_OES_texture_half_float_linear ");
         }
         if(hardext.floatfbo || (globals4es.floattex==2)) {
             strcat(extensions, "GL_EXT_color_buffer_float ");
         }
         if(hardext.halffloatfbo || (globals4es.floattex==2)) {
             strcat(extensions, "GL_EXT_color_buffer_half_float ");
+        }
+        if(hardext.clipcontrol) {
+            strcat(extensions, "GL_ARB_clip_control ");
+            strcat(extensions, "GL_EXT_clip_control ");
         }
         if(hardext.depthtex) {
             strcat(extensions, "GL_EXT_depth_texture ");
