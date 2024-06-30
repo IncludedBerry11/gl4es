@@ -104,8 +104,8 @@ LOCAL_CFLAGS += -include include/gl4esinit.h
 //TODO: maybe temporary?
 LOCAL_CFLAGS += -Wno-typedef-redefinition -Wno-dangling-else
 
-LOCAL_LDLIBS := -llog
-#building as a shared lib
+LOCAL_LDLIBS := -ldl -llog -landroid -lEGL -lGLESv3
+#building as a static lib
 
 LOCAL_CFLAGS += -DSHAREDLIB
 include $(BUILD_SHARED_LIBRARY)
