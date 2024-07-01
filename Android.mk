@@ -8,7 +8,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := gl4es_116_ptitseb
+LOCAL_MODULE := gl4es_117_ptitseb
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 
@@ -83,28 +83,32 @@ LOCAL_SRC_FILES := \
 	src/gl/wrap/gles.c \
 	src/gl/wrap/glstub.c \
 	src/gl/math/matheval.c \
+	src/egl/egl.c \
+	src/glx/glx_stubs.c \
+	src/glx/rpi.c \
+	src/glx/utils.c \
+        src/egl/lookup.c \
 	src/glx/hardext.c \
 	src/glx/glx.c \
 	src/glx/lookup.c \
 	src/glx/gbm.c \
 	src/glx/streaming.c \
-	src/gl/libtxc_dxtn/txc_compress_dxtn.c \
+        src/gl/libtxc_dxtn/txc_compress_dxtn.c
 
-LOCAL_CFLAGS += -std=gnu99 -funwind-tables -O3 -fvisibility=hidden -include include/android_debug.h
+LOCAL_CFLAGS += -DANDROID -pipe -integrated-as -fno-plt -O3 -flto-thin -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -std=gnu17 -funwind-tables -O3 -fvisibility=hidden -include include/android_debug.h
 LOCAL_CFLAGS += -DNOX11
 LOCAL_CFLAGS += -DNO_GBM
-LOCAL_CFLAGS += -DNO_INIT_CONSTRUCTOR=ON
+LOCAL_CFLAGS += -DUSE_ANDROID_LOG=1
+LOCAL_CFLAGS += -DNO_INIT_CONSTRUCTOR
 LOCAL_CFLAGS += -DNOEGL=ON
 LOCAL_CFLAGS += -DNO_LOADER=ON
-LOCAL_CFLAGS += -DDEFAULT_ES=2
+LOCAL_CFLAGS += -DDEFAULT_ES=3
+//TODO: maybe temporary?
 LOCAL_CFLAGS += -Wno-typedef-redefinition -Wno-dangling-else
 LOCAL_CFLAGS += -Dasm=__asm__ -Dvolatile=__volatile__
 LOCAL_CFLAGS += -include include/gl4esinit.h
 
-//TODO: maybe temporary?
-LOCAL_CFLAGS += -Wno-typedef-redefinition -Wno-dangling-else
-
-LOCAL_LDLIBS := -ldl -llog -landroid -lEGL -lGLESv3
+LOCAL_LDLIBS := -ldl -llog -landroid -lEGL -lGLESv2 -lGLESv3
 #building as a static lib
 
 LOCAL_CFLAGS += -DSHAREDLIB
