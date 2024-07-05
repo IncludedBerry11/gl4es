@@ -70,6 +70,9 @@ SET(GL_SRC
 	${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/gles.c
 	${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/glstub.c
 	${CMAKE_CURRENT_SOURCE_DIR}/gl/math/matheval.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_compress_dxtn.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_dxtn.h
+ ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_fetch_dxtn.c
 )
 
 SET(GL_H
