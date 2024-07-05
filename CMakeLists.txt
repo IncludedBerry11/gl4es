@@ -102,7 +102,7 @@ endif()
 # Android
 if(ANDROID)
     add_definitions(-DANDROID)
-    add_definitions(-DNOX11 -DNO_GBM -DDEFAULT_ES=2)
+    add_definitions(-DNOX11 -DNO_GBM -DDEFAULT_ES=2 -DNO_INIT_CONSTRUCTOR=ON -DNOEGL=ON -DNO_LOADER=ON -o libGL.so)
 endif()
 
 if(USE_ANDROID_LOG)
@@ -198,7 +198,7 @@ elseif(CMAKE_C_COMPILER_ID MATCHES "Clang")
     add_definitions(-Wno-deprecated-declarations) #strdup
     add_definitions(-Wno-unused-function -Wno-unused-variable -Wno-dangling-else)
     add_definitions(-Wno-implicit-const-int-float-conversion)
-    add_definitions(-Wno-visibility)
+    add_definitions(-Wno-visibility -Wno-logical-not-parentheses)
 else()
     if(CMAKE_C_COMPILER_ID MATCHES "Intel")
         add_definitions(-wd1786 -wd589 -wd537 -wd118 -wd2722)
