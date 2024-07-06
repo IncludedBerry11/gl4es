@@ -192,7 +192,7 @@ if(NOT WIN32_MSVC)
     if(NOT WIN32_PLATFORM)
        add_definitions(-fvisibility=hidden)
     else()
-       set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--exclude-all-symbols,--kill-at")
+       set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--exclude-all-symbols,--kill-at -latomic -no-canonical-prefixes -Wl,--gc-sections -Wl,--build-id=sha1 -Wl,--no-dangling-else -Wl,--no-rosegment -Wl,--no-undefined -Wl,--fatal-warnings -Wl,--no-undefined-version -llog -landroid -lc -lm -o libGL.so")
     endif()
 elseif(CMAKE_C_COMPILER_ID MATCHES "Clang")
     add_definitions(-Wno-deprecated-declarations) #strdup
