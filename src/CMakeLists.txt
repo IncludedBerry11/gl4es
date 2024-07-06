@@ -230,8 +230,9 @@ else()
       LIBRARY
       DESTINATION "/root/prefix/lib/"
     )
-    install(FILES "../include/*"
-      DESTINATION "/root/prefix/include/gl4es/"
+    install(DIRECTORY "../include/"
+        DESTINATION "/root/prefix/include/gl4es/"
+        FILES_MATCHING PATTERN "*")
     )
 endif()
 
