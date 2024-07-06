@@ -200,6 +200,12 @@ static const hack_t gl4es_hacks[] = {
 {"uniform sampler2D orthoDepthMap;",
 1, {"uniform highp sampler2D orthoDepthMap;"}},
 
+{"source_type = float;",
+1, {"source_type = half_float;"}},
+
+{"mCanvases[frameId]->setTextureDepth(getTexture(Tex_OpaqueDepth, frameId));",
+1, {"mCanvases[frameId]->setTextureDepth(getTexture(Tex_Depth, frameId));"}},
+
 {"uniform bool useAdvancedShader = false;",
 1, {"uniform bool useAdvancedShader;"}},
 
