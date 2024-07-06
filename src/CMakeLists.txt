@@ -231,10 +231,10 @@ else()
       DESTINATION "/root/prefix/lib/"
     )
     install(DIRECTORY "../include/"
-      DESTINATION "/root/prefix/include/gl4es/"      
+      DESTINATION "/root/prefix/include/gl4es"      
     )
     install(DIRECTORY "../include/"
-      DESTINATION "/root/prefix/include/"
+      DESTINATION "/root/prefix/include"
     )
 endif()
 
