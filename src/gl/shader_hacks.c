@@ -196,11 +196,8 @@ static const hack_t gl4es_hacks[] = {
 // for OpenMW
 
 // fog.glsl
-{"color.xyz *= 1.0 - fogValue;",
-1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
-
-{"color.xyz *= fadeValue;",
-1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
+{"#ifdef ADDITIVE_BLENDING",
+1, {"#if defined(ADDITIVE_BLENDING)"}},
 // end of fog.glsl
 
 // for ioQuake3
