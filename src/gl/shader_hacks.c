@@ -194,12 +194,27 @@ static const hack_t gl4es_hacks[] = {
 1, {"uniform mediump vec2 \t\tuTcScale;"}},
 
 // for OpenMW
-{"uniform bool simpleWater = false;",
-1, {"uniform bool simpleWater;"}},
+{"uniform vec2 scaling = vec2(1.0, 1.0);",
+1, {"uniform vec2 scaling;// = vec2(1.0, 1.0);"}},
+
+{"uniform sampler2D orthoDepthMap;",
+1, {"uniform highp sampler2D orthoDepthMap;"}},
+
+{"uniform bool useAdvancedShader = false;",
+1, {"uniform bool useAdvancedShader;"}},
+
+{"color.xyz *= 1.0 - fogValue;",
+1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
+
+{"color.xyz *= fadeValue;",
+1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
+// snells window fix
+{"color.xyz *= fadeValue;",
+1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
 
 // for Lethal League
-{"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
-1, {"uniform vec4 Color;"}},
+{"float ior = (cameraPos.z>0.0)?(1.333/1.0):(1.0/1.333);",
+1, {"float ior = 1.333;"}},
 
 // for ioQuake3
 {"float c[5] = float[5](1.0, 0.9238795325, 0.7071067812, 0.3826834324, 0.0);",
