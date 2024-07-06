@@ -215,10 +215,6 @@ static const hack_t gl4es_hacks[] = {
 {"color.xyz *= fadeValue;",
 1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
 // snells window fix
-{"color.xyz *= fadeValue;",
-1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
-
-// for Lethal League
 {"float ior = (cameraPos.z>0.0)?(1.333/1.0):(1.0/1.333);",
 1, {"float ior = 1.333;"}},
 
