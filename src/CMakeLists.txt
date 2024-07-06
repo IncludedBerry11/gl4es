@@ -224,7 +224,7 @@ else()
     endif()
     
     if(CMAKE_SHARED_LIBRARY_SUFFIX MATCHES ".so")
-        set_target_properties(GL PROPERTIES SUFFIX ".so.1")
+        set_target_properties(GL PROPERTIES SUFFIX ".so")
     endif()
     install(TARGETS GL
       LIBRARY
@@ -252,7 +252,7 @@ if(EGL_WRAPPER)
         target_link_libraries(EGL ${log-lib})
     endif()
     if(CMAKE_SHARED_LIBRARY_SUFFIX MATCHES ".so")
-        set_target_properties(EGL PROPERTIES SUFFIX ".so.1")
+        set_target_properties(EGL PROPERTIES SUFFIX ".so")
     endif()
 endif()
 
