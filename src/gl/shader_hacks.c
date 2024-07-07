@@ -194,8 +194,8 @@ static const hack_t gl4es_hacks[] = {
 1, {"uniform mediump vec2 \t\tuTcScale;"}},
 
 // for OpenMW
-{"uniform bool simpleWater = false;",
-1, {"uniform bool simpleWater;"}},
+{"color.xyz *= 1.0 - fogValue;",
+1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
 
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
