@@ -15,7 +15,7 @@ static const hack_t gl4es_hacks[] = {
 {"#ifdef ADDITIVE_BLENDING",
 1, {"#if defined(ADDITIVE_BLENDING)"}},
 // end of fog.glsl
-
+}
 // for OpenMW
 // fog.glsl
 static const char* gl4es_sign_1[] = {
