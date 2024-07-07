@@ -198,10 +198,6 @@ static const hack_t gl4es_hacks[] = {
 1, {"#if defined(ADDITIVE_BLENDING)"}},
 
 // vertex.h.glsl
-{"@link \"lib/core/vertex.glsl"\ if !@useOVR_multiview\n
--@link \"lib/core/vertex_multiview.glsl"\ if @useOVR_multiview",
-1, {"uniform mat4 projectionMatrix;"}},
-
 {"vec4 modelToView(vec4 pos);",
 1, {"vec4 modelToVIEW(vec4 pos) { return gl_ModelViewMatrix * (pos);}"}},
 
