@@ -447,11 +447,11 @@ static const hack_t gl4es_hacks[] = {
 // fog.glsl
 static const char* gl4es_sign_1[] = {
 "#ifdef ADDITIVE_BLENDING",
-}
+};
 static const char* gl4es_hacks_1[] = {
 "#ifdef ADDITIVE_BLENDING",
 "#if defined(ADDITIVE_BLENDING)",
-}
+};
 
 // For Stellaris
 static const char* gl4es_sign_1[] = {
