@@ -10,11 +10,7 @@ typedef struct hack_s {
 } hack_t;
 
 static const hack_t gl4es_hacks[] = {
-// for OpenMW
-// fog.glsl
-{"#ifdef ADDITIVE_BLENDING",
-1, {"#if defined(ADDITIVE_BLENDING)"}},
-// end of fog.glsl
+
 }
 // for OpenMW
 // fog.glsl
