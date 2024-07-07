@@ -453,40 +453,6 @@ static const char* gl4es_hacks_1[] = {
 "#if defined(ADDITIVE_BLENDING)",
 };
 
-// For Stellaris
-static const char* gl4es_sign_1[] = {
-"if (Data.Type == 1)",
-"if (Data.BlendMode == 0)",
-};
-static const char* gl4es_hacks_1[] = {
-"if (Data.Type == 1)",
-"if (Data.Type == 1.0)",
-
-"if (Data.Type == 2)",
-"if (Data.Type == 2.0)",
-
-"if (Data.Type == 3)",
-"if (Data.Type == 3.0)",
-
-"if (Data.BlendMode == 0)",
-"if (Data.BlendMode == 0.0)",
-
-"if (Data.BlendMode == 1)",
-"if (Data.BlendMode == 1.0)",
-
-"if (Data.BlendMode == 2)",
-"if (Data.BlendMode == 2.0)",
-
-"Out.vMaskingTexCoord = saturate(v.vTexCoord * 1000);",
-"Out.vMaskingTexCoord = saturate(v.vTexCoord * 1000.0);",
-
-"float vTime = 0.9 - saturate( (Time - AnimationTime) * 4 );",
-"float vTime = 0.9 - saturate( (Time - AnimationTime) * 4.0 );",
-
-"float vTime = 0.9 - saturate( (Time - AnimationTime) * 16 );",
-"float vTime = 0.9 - saturate( (Time - AnimationTime) * 16.0 );",
-};
-
 // For Psychonauts
 static const char* gl4es_sign_2[] = {
 "vec4 ps_t3 = gl_TexCoord[3];",
