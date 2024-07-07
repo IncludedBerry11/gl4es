@@ -11,7 +11,7 @@ typedef struct hack_s {
 
 static const hack_t gl4es_hacks[] = {
 
-}
+};
 // for OpenMW
 // fog.glsl
 static const char* gl4es_sign_1[] = {
