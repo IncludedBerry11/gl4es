@@ -228,13 +228,13 @@ else()
     endif()
     install(TARGETS GL
       LIBRARY
-      DESTINATION "/root/prefix/lib/"
+      DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/"
     )
     install(DIRECTORY "../include/"
-      DESTINATION "/root/prefix/include/gl4es"      
+      DESTINATION "${CMAKE_INSTALL_PREFIX}/include/gl4es"      
     )
     install(DIRECTORY "../include/"
-      DESTINATION "/root/prefix/include"
+      DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
     )
 endif()
 
