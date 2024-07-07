@@ -200,7 +200,7 @@ static const hack_t gl4es_hacks[] = {
 // vertex.h.glsl
 {"@link "lib/core/vertex.glsl" if !@useOVR_multiview\n"
 "@link "lib/core/vertex_multiview.glsl" if @useOVR_multiview\n"
-"\n"
+
 "vec4 modelToClip(vec4 pos);\n"
 "vec4 modelToView(vec4 pos);\n"
 "vec4 viewToClip(vec4 pos);\n",
@@ -210,12 +210,12 @@ static const hack_t gl4es_hacks[] = {
 "{\n"
 "    return gl_ModelViewMatrix * pos;\n"
 "}\n"
-"\n"
+
 "vec4 modelToClip(vec4 pos)\n"
 "{\n"
 "    return projectionMatrix * modelToView(pos);\n"
 "}\n"
-"\n"
+
 "vec4 viewToClip(vec4 pos)\n"
 "{\n"
 "    return projectionMatrix * pos;\n"
