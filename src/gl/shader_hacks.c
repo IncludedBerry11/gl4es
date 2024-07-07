@@ -194,33 +194,18 @@ static const hack_t gl4es_hacks[] = {
 1, {"uniform mediump vec2 \t\tuTcScale;"}},
 
 // for OpenMW
-{"color.xyz *= 1.0 - fogValue;",
-1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
+{"#ifdef ADDITIVE_BLENDING",
+1, {"#if defined(ADDITIVE_BLENDING)"}},
 
 // vertex.h.glsl
-{"@link "lib/core/vertex.glsl" if !@useOVR_multiview\n"
-"@link "lib/core/vertex_multiview.glsl" if @useOVR_multiview\n"
+{"vec4 modelToView(vec4 pos);",
+1, {"vec4 modelToVIEW(vec4 pos) { return gl_ModelViewMatrix * (pos);}"}},
 
-"vec4 modelToClip(vec4 pos);\n"
-"vec4 modelToView(vec4 pos);\n"
-"vec4 viewToClip(vec4 pos);\n",
-1, {"uniform mat4 projectionMatrix;\n"
-"\n"
-"vec4 modelToView(vec4 pos)\n"
-"{\n"
-"    return gl_ModelViewMatrix * pos;\n"
-"}\n"
+{"vec4 modelToClip(vec4 pos);",
+1, {"vec4 modelToClip(vec4 pos) { return projectionMatrix * modelToView(pos);}"}},
 
-"vec4 modelToClip(vec4 pos)\n"
-"{\n"
-"    return projectionMatrix * modelToView(pos);\n"
-"}\n"
-
-"vec4 viewToClip(vec4 pos)\n"
-"{\n"
-"    return projectionMatrix * pos;\n"
-"}\n"}},
-
+{"vec4 modelToClip(vec4 pos);",
+1, {"vec4 modelToClip(vec4 pos) { return projectionMatrix * (pos);}"}},
     
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
