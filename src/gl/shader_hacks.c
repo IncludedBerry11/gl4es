@@ -219,7 +219,7 @@ static const hack_t gl4es_hacks[] = {
 "vec4 viewToClip(vec4 pos)\n"
 "{\n"
 "    return projectionMatrix * pos;\n"
-"}\n"
+"}\n"}},
 
     
 // for Lethal League
