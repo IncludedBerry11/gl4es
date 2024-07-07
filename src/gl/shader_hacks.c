@@ -203,7 +203,7 @@ static const hack_t gl4es_hacks[] = {
 "\n"
 "vec4 modelToClip(vec4 pos);\n"
 "vec4 modelToView(vec4 pos);\n"
-"vec4 viewToClip(vec4 pos);\n"
+"vec4 viewToClip(vec4 pos);\n",
 1, {"uniform mat4 projectionMatrix;\n"
 "\n"
 "vec4 modelToView(vec4 pos)\n"
