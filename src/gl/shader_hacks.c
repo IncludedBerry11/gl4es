@@ -197,6 +197,13 @@ static const hack_t gl4es_hacks[] = {
 {"#ifdef ADDITIVE_BLENDING",
 1, {"#if defined(ADDITIVE_BLENDING)"}},
 
+// shadows_fragment.glsl
+{"shadowing = min(shadow2DProj(shadowTexture@shadow_texture_unit_index, shadowSpaceCoords@shadow_texture_unit_index).r, shadowing);",
+1, {"shadowing = calcShadowing(shadowTexture@shadow_texture_unit_index, shadowSpaceCoords@shadow_texture_unit_index);"}},
+
+{"uniform sampler2DShadow shadowTexture@shadow_texture_unit_index;",
+1, {"uniform sampler2D shadowTexture@shadow_texture_unit_index;"}},
+
 // vertex.h.glsl
 {"vec4 modelToView(vec4 pos);",
 1, {"vec4 modelToVIEW(vec4 pos) { return gl_ModelViewMatrix * (pos);}"}},
@@ -206,7 +213,10 @@ static const hack_t gl4es_hacks[] = {
 
 {"vec4 modelToClip(vec4 pos);",
 1, {"vec4 modelToClip(vec4 pos) { return projectionMatrix * (pos);}"}},
-    
+
+
+
+
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
 1, {"uniform vec4 Color;"}},
