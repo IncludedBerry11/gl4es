@@ -196,56 +196,8 @@ static const hack_t gl4es_hacks[] = {
 // for OpenMW
 // BEGIN fog.glsl
 {"#ifdef ADDITIVE_BLENDING",
-1, {"#if defined(ADDITIVE_BLENDING)"}},
+1, {"#ifdef !ADDITIVE_BLENDING"}},
 // END fog.glsl
-
-// BEGIN fragment.h.glsl
-{
-"@link \"lib/core/fragment.glsl\" if !@useOVR_multiview"
-"@link \"lib/core/fragment_multiview.glsl\" if @useOVR_multiview",
-1,
-"uniform sampler2D reflectionMap;"
-}
-
-{"vec4 sampleRefractionMap(vec2 uv);" "float sampleRefractionDepthMap(vec2 uv);",
-1, {"vec4 sampleReflectionMap(vec2 uv) { return texture2D(reflectionMap, uv); }"}},
-
-{"vec4 sampleReflectionMap(vec2 uv);",
-1, {"uniform sampler2D refractionMap;" "uniform highp sampler2D refractionDepthMap;" "vec4 sampleRefractionMap(vec2 uv) { return texture2D(refractionMap, uv); } float sampleRefractionDepthMap(vec2 uv) { return texture2D(refractionDepthMap, uv).x; }}},
-
-{"vec4 samplerLastShader(vec2 uv);",
-1, {"uniform sampler2D lastShader; vec4 samplerLastShader(vec2 uv) { return texture2D(lastShader, uv); }"}},
-
-{"vec3 sampleSkyColor(vec2 uv);",
-1, {"uniform sampler2D sky; vec3 sampleSkyColor(vec2 uv) { return texture2D(sky, uv).xyz; }"}},
-
-// BEGIN shadows_fragment.glsl
-{"shadowing = min(shadow2DProj(shadowTexture@shadow_texture_unit_index, shadowSpaceCoords@shadow_texture_unit_index).r, shadowing);",
-1, {"shadowing = calcShadowing(shadowTexture@shadow_texture_unit_index, shadowSpaceCoords@shadow_texture_unit_index);"}},
-
-{"uniform sampler2DShadow shadowTexture@shadow_texture_unit_index;",
-1, {"uniform sampler2D shadowTexture@shadow_texture_unit_index;"}},
-// END shadows_fragment.glsl
-
-// BEGIN vertex.h.glsl
-{
-"@link \"lib/core/vertex.glsl\" if !@useOVR_multiview)"
-"@link \"lib/core/vertex_multiview.glsl\" if @useOVR_multiview)",
-1,
-"uniform mat4 projectionMatrix;"
-}
-
-{"vec4 modelToClip(vec4 pos);",
-1, {"vec4 modelToClip(vec4 pos) { return projectionMatrix * modelToView(pos);}"}},
-
-{"vec4 modelToView(vec4 pos);",
-1, {"vec4 modelToVIEW(vec4 pos) { return gl_ModelViewMatrix * (pos);}"}},
-
-{"vec4 viewToClip(vec4 pos);",
-1, {"vec4 viewToClip(vec4 pos) { return projectionMatrix * (pos);}"}},
-// END vertex.h.glsl
-
-
 
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
