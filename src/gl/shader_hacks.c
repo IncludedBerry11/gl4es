@@ -195,8 +195,11 @@ static const hack_t gl4es_hacks[] = {
 
 // for OpenMW
 // BEGIN fog.glsl
-{"#ifdef ADDITIVE_BLENDING",
-1, {"#ifdef !ADDITIVE_BLENDING"}},
+{"color.xyz *= fadeValue;",
+1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
+
+{"color.xyz *= 1.0 - fogValue;",
+1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
 // END fog.glsl
 
 // for Lethal League
