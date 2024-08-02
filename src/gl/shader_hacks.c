@@ -202,16 +202,6 @@ static const hack_t gl4es_hacks[] = {
 1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
 // END fog.glsl
 
-// BEGIN fragment.glsl
-{"@link \"lib/core/fragment.glsl\"",
-1, {"@include \"lib/core/fragment.glsl\""}},
-// END fragment.glsl
-
-// BEGIN vertex.glsl
-{"@link \"lib/core/vertex.glsl\"",
-1, {"@include \"lib/core/vertex.glsl\""}},
-//END vertex.glsl
-
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
 1, {"uniform vec4 Color;"}},
