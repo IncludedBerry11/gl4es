@@ -203,13 +203,13 @@ static const hack_t gl4es_hacks[] = {
 // END fog.glsl
 
 // BEGIN fragment.glsl
-{"@link "lib/core/fragment.glsl"",
-1, {"@include "lib/core/fragment.glsl""}},
+{"@link \"lib/core/fragment.glsl\"",
+1, {"@include \"lib/core/fragment.glsl\""}},
 // END fragment.glsl
 
 // BEGIN vertex.glsl
-{"@link "lib/core/vertex.glsl"",
-1, {"@include "lib/core/vertex.glsl""}},
+{"@link \"lib/core/vertex.glsl\"",
+1, {"@include \"lib/core/vertex.glsl\""}},
 //END vertex.glsl
 
 // for Lethal League
