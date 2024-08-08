@@ -203,8 +203,11 @@ static const hack_t gl4es_hacks[] = {
 // END fog.glsl
 
 // Universal shader hacks
-{"@link",
-1, {"@include"}},
+{"@link \"lib/core/fragment.glsl\" if !@useOVR_multiview",
+1, {"@include \"lib/core/fragment.glsl\" if !@useOVR_multiview"}},
+
+{"@link \"lib/core/vertex.glsl\" if !@useOVR_multiview",
+1, {"@include \"lib/core/vertex.glsl\" if !@useOVR_multiview"}},    
 
 // BEGIN random shader hacks
 {"uniform bool useAdvancedShader = false;",
