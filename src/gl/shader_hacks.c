@@ -202,6 +202,21 @@ static const hack_t gl4es_hacks[] = {
 1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
 // END fog.glsl
 
+// BEGIN random shader hacks
+{"uniform bool useAdvancedShader = false;",
+1, {"uniform bool useAdvancedShader;"}},
+
+{"uniform sampler2D orthoDepthMap;",
+1, {"uniform highp sampler2D orthoDepthMap;"}},
+
+{"uniform sampler2D opaqueDepthTex;",
+1, {"uniform highp sampler2D opaqueDepthTex;"}},
+
+{"uniform vec2 scaling = vec2(1.0, 1.0);",
+1, {"uniform vec2 scaling;// = vec2(1.0, 1.0)"}},
+// END random shader hacks
+
+
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
 1, {"uniform vec4 Color;"}},
