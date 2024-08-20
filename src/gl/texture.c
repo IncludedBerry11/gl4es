@@ -937,6 +937,9 @@ void APIENTRY_GL4ES gl4es_glTexImage2D(GLenum target, GLint level, GLint interna
     if(type==GL_HALF_FLOAT)
         type = GL_HALF_FLOAT_OES;
 
+    if(type==GL_FLOAT)
+        type = GL_HALF_FLOAT_OES;
+
     /*if(format==GL_COMPRESSED_LUMINANCE)
         format = GL_RGB;*/    // Danger from the Deep does that. 
         //That's odd, probably a bug (line 453 of src/texture.cpp, it should be interformat instead of format)
