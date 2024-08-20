@@ -204,6 +204,7 @@
 #define GL_COMPRESSED_RGBA			   0x84EE
 #define GL_COMPRESSED_TEXTURE_FORMATS  0x86A3
 #define GL_HALF_FLOAT_OES              0x8D61
+#define GL_FLOAT_OES              0x8D61
 #define GL_RGB565                      0x8D62
 
 // types
@@ -219,6 +220,7 @@
 #define GL_4_BYTES              0x1409
 #define GL_DOUBLE               0x140A
 #define GL_HALF_FLOAT           0x140B
+#define GL_FLOAT           0x140B
 #define GL_BITMAP               0x1A00
 
 #define GL_COMPILE              0x1300
