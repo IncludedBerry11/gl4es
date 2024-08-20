@@ -3,9 +3,9 @@ include_directories(util)
 #file(GLOB_RECURSE GL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/gl/*.c)
 SET(GL_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbconverter.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbgenerator.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbhelper.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbparser.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbgenerator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbhelper.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbparser.c
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/array.c
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/blit.c
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/blend.c
@@ -66,26 +66,26 @@ SET(GL_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/texture_3d.c
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/uniform.c
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/vertexattrib.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/gl4eswraps.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/gles.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/glstub.c
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/math/matheval.c
- ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_compress_dxtn.c
- ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_dxtn.h
- ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_fetch_dxtn.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/gl4eswraps.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/gles.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/wrap/glstub.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/math/matheval.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_compress_dxtn.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_dxtn.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/libtxc_dxtn/txc_fetch_dxtn.c
 )
 
 SET(GL_H
     ${CMAKE_CURRENT_SOURCE_DIR}/../version.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbconverter.h
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbgenerator.h
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbhelper.h
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/arbparser.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbgenerator.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbhelper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/arbparser.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/array.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/blend.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/blit.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/buffers.h
-	${CMAKE_CURRENT_SOURCE_DIR}/gl/build_info.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/gl/build_info.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/const.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/debug.h
     ${CMAKE_CURRENT_SOURCE_DIR}/gl/decompress.h
@@ -147,11 +147,11 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND NOT NO_LOADER)
     list(APPEND GL_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/glx/hardext.c
         ${CMAKE_CURRENT_SOURCE_DIR}/glx/gbm.c
-	    ${CMAKE_CURRENT_SOURCE_DIR}/glx/glx.c
-	    ${CMAKE_CURRENT_SOURCE_DIR}/glx/glx_stubs.c
-	    ${CMAKE_CURRENT_SOURCE_DIR}/glx/lookup.c
+	${CMAKE_CURRENT_SOURCE_DIR}/glx/glx.c
+	${CMAKE_CURRENT_SOURCE_DIR}/glx/glx_stubs.c
+	${CMAKE_CURRENT_SOURCE_DIR}/glx/lookup.c
         ${CMAKE_CURRENT_SOURCE_DIR}/glx/rpi.c
-	    ${CMAKE_CURRENT_SOURCE_DIR}/glx/streaming.c
+	${CMAKE_CURRENT_SOURCE_DIR}/glx/streaming.c
         ${CMAKE_CURRENT_SOURCE_DIR}/glx/utils.c
     )
     list(APPEND GL_H
