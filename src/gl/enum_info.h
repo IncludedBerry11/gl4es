@@ -28,8 +28,6 @@ static const GLsizei gl_sizeof(GLenum type) {
         case GL_SHORT:
         case GL_HALF_FLOAT:
         case GL_HALF_FLOAT_OES:
-	case GL_FLOAT:
-        case GL_FLOAT_OES:
         case GL_UNSIGNED_SHORT:
         case GL_UNSIGNED_SHORT_1_5_5_5_REV:
         case GL_UNSIGNED_SHORT_4_4_4_4:
