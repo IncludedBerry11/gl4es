@@ -691,7 +691,6 @@ extern "C" {
 /* reuse GL_FRAMEBUFFER_SRGB */
 /* Reuse tokens from ARB_half_float_vertex */
 /* reuse GL_HALF_FLOAT */
-/* reuse GL_FLOAT */
 /* Reuse tokens from ARB_map_buffer_range */
 /* reuse GL_MAP_READ_BIT */
 /* reuse GL_MAP_WRITE_BIT */
@@ -1508,10 +1507,6 @@ extern "C" {
 #define GL_CLAMP_READ_COLOR_ARB           0x891C
 #define GL_FIXED_ONLY_ARB                 0x891D
 #endif
-
-#ifndef GL_ARB_float_pixel
-#define GL_FLOAT_ARB                 0x140B
-#endif
   
 #ifndef GL_ARB_half_float_pixel
 #define GL_HALF_FLOAT_ARB                 0x140B
@@ -1667,10 +1662,6 @@ extern "C" {
 #define GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB 0x8DE1
 /* reuse GL_MAX_VARYING_COMPONENTS */
 /* reuse GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER */
-#endif
-
-#ifndef GL_ARB_float_vertex
-#define GL_FLOAT                     0x140B
 #endif
   
 #ifndef GL_ARB_half_float_vertex
@@ -4078,10 +4069,6 @@ extern "C" {
 #define GL_MAX_TEXTURE_IMAGE_UNITS_NV     0x8872
 #define GL_FRAGMENT_PROGRAM_BINDING_NV    0x8873
 #define GL_PROGRAM_ERROR_STRING_NV        0x8874
-#endif
-
-#ifndef GL_NV_float
-#define GL_FLOAT_NV                  0x140B
 #endif
   
 #ifndef GL_NV_half_float
