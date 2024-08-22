@@ -85,7 +85,6 @@ const char* PrintEnum(GLenum what) {
         p(GL_COMPRESSED_RGB);
         p(GL_COMPRESSED_RGBA);
         p(GL_HALF_FLOAT);
-        p(GL_FLOAT);
         p(GL_INTENSITY);
         p(GL_INTENSITY8);
         p(GL_INTENSITY16F);
