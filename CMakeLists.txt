@@ -102,7 +102,7 @@ endif()
 # Android
 if(ANDROID)
     add_definitions(-DANDROID)
-    add_definitions(-DNOX11 -DNO_GBM -DDEFAULT_ES=2 -DUSE_ANDROID_LOG=ON -include ../android_debug.h -DNO_INIT_CONSTRUCTOR=ON -DNOEGL=ON -DNO_LOADER=ON -o libGL.so)
+    add_definitions(-DNOX11 -DNO_GBM -DDEFAULT_ES=2 -DUSE_ANDROID_LOG=ON -Iinclude/android_debug.h -DNO_INIT_CONSTRUCTOR=ON -DNOEGL=ON -DNO_LOADER=ON -o libGL.so)
 endif()
 
 if(USE_ANDROID_LOG)
