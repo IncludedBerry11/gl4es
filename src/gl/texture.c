@@ -900,6 +900,12 @@ void APIENTRY_GL4ES gl4es_glTexImage2D(GLenum target, GLint level, GLint interna
     
     if(data==NULL && (internalformat == GL_RGB16F || internalformat == GL_RGBA16F))
         internal2format_type(internalformat, &format, &type);
+
+    if(data==NULL && (internalformat == GL_R16F || internalformat == GL_RGB16F_ARB))
+        internal2format_type(internalformat, &format, &type);
+
+    if(data==NULL && (internalformat == GL_RED || internalformat == GL_RGB))
+        internal2format_type(internalformat, &format, &type);
     
     // proxy case
     const GLuint itarget = what_target(target);
