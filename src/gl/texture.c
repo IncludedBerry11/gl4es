@@ -168,6 +168,17 @@ void internal2format_type(GLenum internalformat, GLenum *format, GLenum *type)
             *format = GL_DEPTH_STENCIL;
             *type = GL_UNSIGNED_INT_24_8;
             break;
+        case GL_R16F:
+            if(!hardext.rgtex)
+                *format = GL_RGB;
+        else
+            *format = GL_RED;
+
+        if(!hardext.halffloattex)
+            *type = GL_UNSIGNED_BYTE;
+        else
+            *type = GL_HALF_FLOAT_OES;
+            break;
         case GL_RGBA16F:
             *format = GL_RGBA;
             *type = (hardext.halffloattex)?GL_HALF_FLOAT_OES:GL_UNSIGNED_BYTE;
@@ -901,8 +912,7 @@ void APIENTRY_GL4ES gl4es_glTexImage2D(GLenum target, GLint level, GLint interna
     if(data==NULL && (internalformat == GL_RGB16F || internalformat == GL_RGBA16F))
         internal2format_type(internalformat, &format, &type);
 
-    if(data==NULL && (internalformat == GL_R16F || internalformat == GL_RGB16F_ARB))
-        internal2format_type(internalformat, &format, &type);
+    if(internalformat == GL_R16F ) internal2format_type(internalformat, &format, &type);
 
     if(data==NULL && (internalformat == GL_RED || internalformat == GL_RGB))
         internal2format_type(internalformat, &format, &type);
