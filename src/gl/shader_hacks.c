@@ -197,6 +197,19 @@ static const hack_t gl4es_hacks[] = {
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
 1, {"uniform vec4 Color;"}},
 
+// openmw
+{"uniform bool useAdvancedShader = false;",
+1, {"uniform bool useAdvancedShader;"}},
+
+{"uniform sampler2D orthoDepthMap;",
+1, {"uniform highp sampler2D orthoDepthMap;"}},
+
+{"uniform sampler2D opaqueDepthTex;",
+1, {"uniform highp sampler2D opaqueDepthTex;"}},
+
+{"uniform vec2 scaling = vec2(1.0, 1.0);",
+1, {"uniform vec2 scaling;"}},
+
 // for ioQuake3
 {"float c[5] = float[5](1.0, 0.9238795325, 0.7071067812, 0.3826834324, 0.0);",
 1, {"float c[5]; c[0]=1.0; c[1]=0.9238795325; c[2]=0.7071067812; c[3]=0.3826834324; c[4]=0.0;"}},
