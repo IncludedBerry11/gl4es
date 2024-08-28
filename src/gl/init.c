@@ -645,7 +645,7 @@ void initialize_gl4es() {
     env(LIBGL_NOES2COMPAT, globals4es.noes2, "Don't expose GLX_EXT_create_context_es2_profile extension");
     env(LIBGL_NORMALIZE, globals4es.normalize, "Force normals to be normalized on FPE shaders");
 
-    globals4es.dbgshaderconv=ReturnEnvVarIntDef("LIBGL_DBGSHADERCONV",0);
+    globals4es.dbgshaderconv=1;//ReturnEnvVarIntDef("LIBGL_DBGSHADERCONV",0);
     if(globals4es.dbgshaderconv) {
       if(globals4es.dbgshaderconv==1)
           globals4es.dbgshaderconv=15;
