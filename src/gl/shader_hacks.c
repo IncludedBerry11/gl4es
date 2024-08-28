@@ -201,6 +201,9 @@ static const hack_t gl4es_hacks[] = {
 {"uniform bool useAdvancedShader = false;",
 1, {"uniform bool useAdvancedShader;"}},
 
+{"uniform @builtinSampler omw_SamplerDepth;",
+1, {"uniform highp @builtinSampler omw_SamplerDepth;"}},
+
 {"uniform sampler2D orthoDepthMap;",
 1, {"uniform highp sampler2D orthoDepthMap;"}},
 
