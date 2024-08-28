@@ -193,37 +193,6 @@ static const hack_t gl4es_hacks[] = {
 {"uniform highp \tvec2 \t\tuTcScale;",
 1, {"uniform mediump vec2 \t\tuTcScale;"}},
 
-// for OpenMW
-// BEGIN fog.glsl
-{"color.xyz *= fadeValue;",
-1, {"color.xyz = mix(sampleSkyColor(gl_FragCoord.xy / screenRes), color.xyz, fadeValue);"}},
-
-{"color.xyz *= 1.0 - fogValue;",
-1, {"color.xyz = mix(color.xyz, gl_Fog.color.xyz, fogValue);"}},
-// END fog.glsl
-
-// Universal shader hacks
-{"@link \"lib/core/fragment.glsl\" if !@useOVR_multiview",
-1, {"@include \"lib/core/fragment.glsl\" if !@useOVR_multiview"}},
-
-{"@link \"lib/core/vertex.glsl\" if !@useOVR_multiview",
-1, {"@include \"lib/core/vertex.glsl\" if !@useOVR_multiview"}},    
-
-// BEGIN random shader hacks
-{"uniform bool useAdvancedShader = false;",
-1, {"uniform bool useAdvancedShader;"}},
-
-{"uniform sampler2D orthoDepthMap;",
-1, {"uniform highp sampler2D orthoDepthMap;"}},
-
-{"uniform sampler2D opaqueDepthTex;",
-1, {"uniform highp sampler2D opaqueDepthTex;"}},
-
-{"uniform vec2 scaling = vec2(1.0, 1.0);",
-1, {"uniform vec2 scaling;// = vec2(1.0, 1.0)"}},
-// END random shader hacks
-
-
 // for Lethal League
 {"uniform vec4 Color = vec4(1.0, 1.0, 1.0, 1.0);",
 1, {"uniform vec4 Color;"}},
