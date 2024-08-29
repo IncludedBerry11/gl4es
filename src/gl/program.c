@@ -742,25 +742,45 @@ void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program) {
     for (int i=0; i<glprogram->attach_size; i++) {
         accumShaderNeeds(glprogram->attach[i], &needs);
     }
+
+    // Function to replace @link with #include
+    auto replaceLinkWithInclude =  -> char* {
+        std::string src(source);
+        size_t pos = src.find("@link");
+        if (pos != std::string::npos) {
+            src.replace(pos, 5, "#include");
+        }
+        char* modifiedSource = (char*)malloc(src.size() + 1);
+        strcpy(modifiedSource, src.c_str());
+        return modifiedSource;
+    };
+
     // create one vertex shader if needed!
     if(!glprogram->last_vert) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
         memcpy(glprogram->default_need, &needs, sizeof(shaderconv_need_t));
         glprogram->default_vertex = 1;
         GLenum vtx = gl4es_glCreateShader(GL_VERTEX_SHADER);
-        gl4es_glShaderSource(vtx, 1, fpe_VertexShader(&needs, NULL), NULL);
+        const char* vertexSource = fpe_VertexShader(&needs, NULL);
+        char* modifiedVertexSource = replaceLinkWithInclude(vertexSource);
+        gl4es_glShaderSource(vtx, 1, &modifiedVertexSource, NULL);
         gl4es_glCompileShader(vtx);
         gl4es_glAttachShader(glprogram->id, vtx);
+        free(modifiedVertexSource);
     }
+
     // create one fragment shader if needed!
     if(!glprogram->last_frag) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
         memcpy(glprogram->default_need, &needs, sizeof(shaderconv_need_t));
         glprogram->default_fragment = 1;
         GLenum vtx = gl4es_glCreateShader(GL_FRAGMENT_SHADER);
-        gl4es_glShaderSource(vtx, 1, fpe_FragmentShader(&needs, NULL), NULL);
+        const char* fragmentSource = fpe_FragmentShader(&needs, NULL);
+        char* modifiedFragmentSource = replaceLinkWithInclude(fragmentSource);
+        gl4es_glShaderSource(vtx, 1, &modifiedFragmentSource, NULL);
         gl4es_glCompileShader(vtx);
         gl4es_glAttachShader(glprogram->id, vtx);
+        free(modifiedFragmentSource);
     }
     int compatible = 1;
     // now is everyone ok?
