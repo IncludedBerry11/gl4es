@@ -753,22 +753,14 @@ void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program) {
         gl4es_glAttachShader(glprogram->id, vtx);
     }
     // create one fragment shader if needed!
-    std::string shaderSource = fpe_FragmentShader(&needs, NULL);
     if(!glprogram->last_frag) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
         memcpy(glprogram->default_need, &needs, sizeof(shaderconv_need_t));
         glprogram->default_fragment = 1;
-        GLenum vtx = gl4es_glCreateShader(GL_FRAGMENT_SHADER);        
-	size_t pos = shaderSource.find("@link");
-	while (pos != std::string::npos) {
-            shaderSource.replace(pos, 5, "#include");
-            pos = shaderSource.find("@link");
-	}
-	    
-	// Set the modified shader source and compile
-	gl4es_glShaderSource(vtx, 1, shaderSource.c_str(), NULL);
-	gl4es_glCompileShader(vtx);
-	gl4es_glAttachShader(glprogram->id, vtx);
+        GLenum vtx = gl4es_glCreateShader(GL_FRAGMENT_SHADER);
+        gl4es_glShaderSource(vtx, 1, fpe_FragmentShader(&needs, NULL), NULL);
+        gl4es_glCompileShader(vtx);
+        gl4es_glAttachShader(glprogram->id, vtx);
     }
     int compatible = 1;
     // now is everyone ok?
