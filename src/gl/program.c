@@ -742,42 +742,33 @@ void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program) {
     for (int i=0; i<glprogram->attach_size; i++) {
         accumShaderNeeds(glprogram->attach[i], &needs);
     }
-
-    std::string replaceLinkWithInclude(const char* source) {
-    std::string src(source);
-    size_t pos = src.find("@link");
-    if (pos != std::string::npos) {
-        src.replace(pos, 5, "#include");
-    }
-    return src;
-    }
-	    
     // create one vertex shader if needed!
     if(!glprogram->last_vert) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
         memcpy(glprogram->default_need, &needs, sizeof(shaderconv_need_t));
         glprogram->default_vertex = 1;
         GLenum vtx = gl4es_glCreateShader(GL_VERTEX_SHADER);
-        const char* vertexSource = fpe_VertexShader(&needs, NULL);
-        char* modifiedVertexSource = replaceLinkWithInclude(vertexSource);
-        gl4es_glShaderSource(vtx, 1, &modifiedVertexSource, NULL);
+        gl4es_glShaderSource(vtx, 1, fpe_VertexShader(&needs, NULL), NULL);
         gl4es_glCompileShader(vtx);
         gl4es_glAttachShader(glprogram->id, vtx);
-        free(modifiedVertexSource);
     }
-
     // create one fragment shader if needed!
     if(!glprogram->last_frag) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
         memcpy(glprogram->default_need, &needs, sizeof(shaderconv_need_t));
         glprogram->default_fragment = 1;
         GLenum vtx = gl4es_glCreateShader(GL_FRAGMENT_SHADER);
-        const char* fragmentSource = fpe_FragmentShader(&needs, NULL);
-        char* modifiedFragmentSource = replaceLinkWithInclude(fragmentSource);
-        gl4es_glShaderSource(vtx, 1, &modifiedFragmentSource, NULL);
-        gl4es_glCompileShader(vtx);
-        gl4es_glAttachShader(glprogram->id, vtx);
-        free(modifiedFragmentSource);
+        std::string shaderSource = fpe_FragmentShader(&needs, NULL);
+	size_t pos = shaderSource.find("@link");
+	while (pos != std::string::npos) {
+            shaderSource.replace(pos, 5, "#include");
+            pos = shaderSource.find("@link");
+	}
+	    
+	// Set the modified shader source and compile
+	gl4es_glShaderSource(vtx, 1, shaderSource.c_str(), NULL);
+	gl4es_glCompileShader(vtx);
+	gl4es_glAttachShader(glprogram->id, vtx);
     }
     int compatible = 1;
     // now is everyone ok?
