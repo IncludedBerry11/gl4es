@@ -565,6 +565,8 @@ char* ConvertShader(const char* pEntry, int isVertex, shaderconv_need_t *need)
 
   Tmp = gl4es_inplace_insert(gl4es_getline(Tmp, headline-1), "#define GL4ES\n", Tmp, &tmpsize);
 
+  Tmp = gl4es_inplace_replace(Tmp, &tmpsize, "@link", "#include");
+
   int derivatives = (strstr(pBuffer, "dFdx(") || strstr(pBuffer, "dFdy(") || strstr(pBuffer, "fwidth("))?1:0;
   const char* GLESUseDerivative = "#extension GL_OES_standard_derivatives : enable\n";
   // complete fake value... A better thing should be use....
