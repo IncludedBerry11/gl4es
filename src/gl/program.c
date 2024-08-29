@@ -743,18 +743,17 @@ void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program) {
         accumShaderNeeds(glprogram->attach[i], &needs);
     }
 
-    // Function to replace @link with #include
-    auto replaceLinkWithInclude =  -> char* {
-        std::string src(source);
-        size_t pos = src.find("@link");
-        if (pos != std::string::npos) {
-            src.replace(pos, 5, "#include");
-        }
-        char* modifiedSource = (char*)malloc(src.size() + 1);
-        strcpy(modifiedSource, src.c_str());
-        return modifiedSource;
-    };
-
+    char* replaceLinkWithInclude(const char* source) {
+    std::string src(source);
+    size_t pos = src.find("@link");
+    if (pos != std::string::npos) {
+        src.replace(pos, 5, "#include");
+    }
+    char* modifiedSource = (char*)malloc(src.size() + 1);
+    strcpy(modifiedSource, src.c_str());
+    return modifiedSource;
+    }
+	    
     // create one vertex shader if needed!
     if(!glprogram->last_vert) {
         glprogram->default_need = (shaderconv_need_t*)malloc(sizeof(shaderconv_need_t));
