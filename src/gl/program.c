@@ -750,7 +750,9 @@ void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program) {
         src.replace(pos, 5, "#include");
     }
     char* modifiedSource = (char*)malloc(src.size() + 1);
-    strcpy(modifiedSource, src.c_str());
+    if (modifiedSource != NULL) {
+        strcpy(modifiedSource, src.c_str());
+    }
     return modifiedSource;
     }
 	    
