@@ -1,0 +1,18 @@
+name: Build gl4es-114
+on: [push, workflow_dispatch]
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build GL4ES
+        run: |
+         # wget https://dl.google.com/android/repository/android-ndk-r25c-linux.zip
+         # unzip android-ndk-r25c-linux.zip >> /dev/null
+         $ANDROID_NDK_HOME/ndk-build APP_BUILD_SCRIPT=./Android.mk NDK_PROJECT_PATH=.
+      - run: ls libs/*
+      - name: Upload GL4ES libs
+        uses: actions/upload-artifact@v4
+        with:
+          name: gl4es
+          path: libs/arm64-v8a
